@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portofolio — Nama Anda</title>
+  <meta name="description" content="Portofolio pribadi — proyek, keterampilan, kontak." />
+  <style>
+    /* Reset & basic */
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#06b6d4;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;font-size:16px;color:#e6eef6;background:linear-gradient(180deg,#071023 0%,#071833 60%);-webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:32px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+    .avatar{width:96px;height:96px;border-radius:18px;overflow:hidden;flex:0 0 96px;background:var(--glass);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.06)}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    .intro h1{margin:0;font-size:1.6rem}
+    .intro p{margin:6px 0 0;color:var(--muted)}
+
+    /* Layout */
+    main{display:grid;grid-template-columns:1fr 320px;gap:24px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:14px}
+
+    /* Projects */
+    .projects{display:grid;gap:12px}
+    .project{display:flex;gap:12px;align-items:flex-start}
+    .project .thumb{width:120px;height:76px;border-radius:10px;flex-shrink:0;background:linear-gradient(90deg,#0b3350,#05394a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .project h3{margin:0;font-size:1rem}
+    .project p{margin:6px 0 0;color:var(--muted);font-size:0.95rem}
+    .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Sidebar */
+    .profile-stats{display:flex;gap:12px;margin-top:12px}
+    .stat{flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;text-align:center}
+    .stat h4{margin:0;font-size:1.1rem}
+    .stat p{margin:6px 0 0;color:var(--muted);font-size:0.85rem}
+
+    /* Skills */
+    .skill{margin-bottom:10px}
+    .skill .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+    .skill .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7dd3fc);border-radius:999px}
+
+    /* Contact */
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    button{background:var(--accent);border:0;padding:10px 14px;border-radius:10px;color:#022;cursor:pointer;font-weight:600}
+
+    footer{margin-top:22px;color:var(--muted);font-size:0.9rem;text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){main{grid-template-columns:1fr}header{flex-direction:row-reverse;justify-content:space-between}.avatar{width:72px;height:72px} .container{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="intro">
+        <h1>Nama Anda — <small style="color:var(--muted);font-weight:600">Frontend Developer</small></h1>
+        <p>Halo! Saya pembuat proyek web responsif, UI/UX sederhana, dan aplikasi kecil. Scroll untuk melihat portofolio saya.</p>
+      </div>
+
+      <div class="avatar">
+        <!-- gunakan file yang Anda upload -->
+        <img src="/mnt/data/317d673f-3c8b-4622-a900-5bfa8c48a02d.png" alt="Foto Profil">
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="card">
+          <h2>Proyek Terbaru</h2>
+          <div class="projects">
+            <article class="project">
+              <div class="thumb">P1</div>
+              <div>
+                <h3>Website Toko Online</h3>
+                <p>Sebuah toko online sederhana dengan sistem katalog, keranjang, dan checkout mockup.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="thumb">P2</div>
+              <div>
+                <h3>Aplikasi To-Do</h3>
+                <p>Aplikasi produktivitas dengan penyimpanan lokal dan UI minimalis.</p>
+                <div class="tags"><span class="tag">React</span><span class="tag">LocalStorage</span></div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="thumb">P3</div>
+              <div>
+                <h3>Landing Page Campaign</h3>
+                <p>Landing page optimasi konversi dengan desain mobile-first.</p>
+                <div class="tags"><span class="tag">Responsive</span><span class="tag">SEO</span></div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2>Tentang Saya</h2>
+          <p style="color:var(--muted)">Saya berfokus pada pembuatan antarmuka yang sederhana, cepat, dan mudah digunakan. Tertarik bekerja sama pada proyek freelance atau tim kecil.</p>
+          <ul style="color:var(--muted);margin-top:10px;padding-left:18px">
+            <li>Pengalaman: 3+ tahun membangun website</li>
+            <li>Tools: VSCode, Git, Figma</li>
+            <li>Bahasa: HTML, CSS, JS, sedikit React</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Statistik</h3>
+          <div class="profile-stats">
+            <div class="stat"><h4>24</h4><p>Proyek</p></div>
+            <div class="stat"><h4>3</h4><p>Tahun</p></div>
+            <div class="stat"><h4>120</h4><p>Klien</p></div>
+          </div>
+
+          <h3 style="margin-top:16px">Keterampilan</h3>
+          <div class="skill"><div style="display:flex;justify-content:space-between"><strong>HTML &amp; CSS</strong><span style="color:var(--muted)">95%</span></div><div class="bar" style="margin-top:6px"><i style="width:95%"></i></div></div>
+          <div class="skill"><div style="display:flex;justify-content:space-between"><strong>JavaScript</strong><span style="color:var(--muted)">80%</span></div><div class="bar" style="margin-top:6px"><i style="width:80%"></i></div></div>
+          <div class="skill"><div style="display:flex;justify-content:space-between"><strong>React</strong><span style="color:var(--muted)">65%</span></div><div class="bar" style="margin-top:6px"><i style="width:65%"></i></div></div>
+
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Kontak</h3>
+          <form onsubmit="event.preventDefault();alert('Terima kasih! Pesan dikirim (demo)')">
+            <input type="text" placeholder="Nama" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Pesan" required></textarea>
+            <button type="submit">Kirim Pesan</button>
+          </form>
+
+          <div style="margin-top:12px;color:var(--muted);font-size:0.95rem">
+            <div>LinkedIn: <a href="#" style="color:var(--accent)">linkedin.com/in/username</a></div>
+            <div>GitHub: <a href="#" style="color:var(--accent)">github.com/username</a></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Nama Anda — Portofolio
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
