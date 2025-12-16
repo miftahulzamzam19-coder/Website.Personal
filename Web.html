@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miftahul Tangguh</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>PortoFolio</title>
+  <link rel="stylesheet" href="Web.css">
 </head>
 <body>
   <nav class="navbar">
@@ -19,33 +19,138 @@
   </nav>
  
   <section class="hero-section">
-    <img id="profilePic" src="profile.jpg" alt="Foto Profil" class="profile-pic" onerror="this.src='https://via.placeholder.com/150?text=Foto+Profil'" />
-    <div class="edit-profile-pic">
-      <form class="profile-form" id="profileForm">
-        <label for="fotoProfile">Ganti Foto Profil</label>
-        <input type="file" id="fotoProfile" accept="image/*" />
-        <button type="submit">Simpan</button>
-      </form>
-    </div>
-    <h1 id="profileName">MiftahulTangguh</h1>
-    <p class="subtitle" id="profileDesc">Entrepreneur</p>
-    <form class="profile-form" id="editProfileForm">
-      <label for="namaProfile">Nama</label>
-      <input type="text" id="namaProfile" value=",MiftahulTangguh" />
-      <label for="descProfile">Deskripsi</label>
-      <input type="text" id="descProfile" value="Entrepreneur" />
-      <button type="submit">Simpan Profil</button>
-    </form>
-  </section>
+  <div class="profile-wrapper">
+    <img id="profilePic" src="profile.jpg" alt="Foto Profil"
+      class="profile-pic"
+      onerror="this.src='https://via.placeholder.com/150?text=Foto+Profil'" />
+
+    <p class="profile-caption">Shooting Guard ~ Call me +6281384398429</p>
+  </div>
+
+  <div class="edit-profile-pic">
+    <form class="profile-form" id="profileForm">
+      <label for="fotoProfile">Ganti Foto Profil</label>
+      <input type="file" id="fotoProfile" accept="image/*" />
+      <button type="submit">Simpan</button>
+    </form>
+  </div>
+
+  <h1 id="profileName">MiftahulTangguh</h1>
+  <p class="subtitle" id="profileDesc"> Basketball Player</p>
+
+  <form class="profile-form" id="editProfileForm">
+    <label for="namaProfile">Nama</label>
+    <input type="text" id="namaProfile" value="Your Name" />
+    <label for="descProfile">Deskripsi</label>
+    <input type="text" id="descProfile" value="Your Job" />
+    <button type="submit">Simpan Profil</button>
+  </form>
+</section>
+
  
   <section class="gallery-section" id="gallery-section">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">Foto 1</div>
-      <div class="gallery-item">Foto 2</div>
-      <div class="gallery-item">Foto 3</div>
-    </div>
-  </section>
+  <h2>Gallery</h2>
+
+  <!-- FOTO GALERI -->
+  <div class="gallery-grid">
+    <img id="galleryPic1" class="gallery-item"
+      src="https://via.placeholder.com/200?text=Foto+1">
+    <img id="galleryPic2" class="gallery-item"
+      src="https://via.placeholder.com/200?text=Foto+2">
+    <img id="galleryPic3" class="gallery-item"
+      src="https://via.placeholder.com/200?text=Foto+3">
+  </div>
+
+  <!-- FORM EDIT GALERI -->
+  <div class="edit-gallery">
+    <form class="profile-form" id="galleryForm">
+      <label for="galleryFile">Ganti Foto Galeri</label>
+      <input type="file" id="galleryFile" accept="image/*" required>
+
+      <select id="galleryIndex">
+        <option value="0">Foto 1</option>
+        <option value="1">Foto 2</option>
+        <option value="2">Foto 3</option>
+      </select>
+
+      <button type="submit">Simpan Foto</button>
+    </form>
+  </div>
+</section>
+
+<!-- SCRIPT HARUS DI BAWAH -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const galleryPics = [
+    document.getElementById("galleryPic1"),
+    document.getElementById("galleryPic2"),
+    document.getElementById("galleryPic3")
+  ];
+
+  const galleryForm = document.getElementById("galleryForm");
+  const galleryFile = document.getElementById("galleryFile");
+  const galleryIndex = document.getElementById("galleryIndex");
+
+  // Load dari localStorage
+  const savedGallery = JSON.parse(localStorage.getItem("galleryPics")) || [];
+  savedGallery.forEach((src, i) => {
+    if (galleryPics[i] && src) galleryPics[i].src = src;
+  });
+
+  galleryForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const file = galleryFile.files[0];
+    const index = galleryIndex.value;
+
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      galleryPics[index].src = ev.target.result;
+      savedGallery[index] = ev.target.result;
+      localStorage.setItem("galleryPics", JSON.stringify(savedGallery));
+    };
+    reader.readAsDataURL(file);
+
+    galleryFile.value = "";
+  });
+
+});
+</script>
+
+
+
+<script>
+  const uploadInput = document.getElementById("galleryUpload");
+  const galleryGrid = document.getElementById("galleryGrid");
+
+  uploadInput.addEventListener("change", function () {
+    const files = Array.from(uploadInput.files).slice(0, 3);
+
+    // Hapus isi lama
+    galleryGrid.innerHTML = "";
+
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const div = document.createElement("div");
+        div.className = "gallery-item";
+
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "cover";
+
+        div.appendChild(img);
+        galleryGrid.appendChild(div);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+</script>
  
   <section class="latihan-section" id="latihan-section">
     <h2>Latihan</h2>
